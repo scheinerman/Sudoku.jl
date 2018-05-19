@@ -6,7 +6,7 @@ using JuMP
 using MathProgBase
 using Cbc
 
-export sudoku
+export sudoku, sudoku_check
 
 """
 `sudoku(A::Matrix)` solves the Sudoku puzzle given by the matrix `A`.
@@ -79,5 +79,43 @@ function sudoku(A::Matrix{Int})::Matrix{Int}
     return B
 end
 
+"""
+`sudoku_check(A)` checks if a 9x9 matrix is a valid solution to a Sudoku
+puzzle. That is, we check that every row, column, and 3x3 submatrix contains
+the values 1 through 9 exactly once each.
+"""
+function sudoku_check(A::Matrix{Int})::Bool
+    vals = collect(1:9)
+    n = 9
+    nn = 3
+
+    for i=1:n
+        row = sort(A[i,:])
+        if row != vals
+            return false
+        end
+    end
+
+    for j=1:n
+        col = sort(A[:,j])
+        if col != vals
+            return false
+        end
+    end
+
+    for a=0:nn-1
+        for b=0:nn-1
+            AA = A[nn*a+1:nn*(a+1), nn*b+1:nn*(b+1)]
+            if sort(AA[:]) != vals
+                return false
+            end
+        end
+    end
+
+    return true
+end
+
+
+include("examples.jl")
 
 end # module
