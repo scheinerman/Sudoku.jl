@@ -6,4 +6,12 @@ else
 end
 
 # write your own tests here
-@test 1 == 2
+
+A = sudoku(Sudoku.puzz1)
+@test sudoku_check(A)
+
+A = sudoku(Sudoku.puzz2)
+@test sudoku_check(A)
+
+A = sudoku(Sudoku.puzz3)
+@test sudoku_check(A)

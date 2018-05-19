@@ -1,5 +1,12 @@
 # Sudoku
 
+
+[![Build Status](https://travis-ci.org/scheinerman/Sudoku.jl.svg?branch=master)](https://travis-ci.org/scheinerman/Sudoku.jl)
+
+[![Coverage Status](https://coveralls.io/repos/scheinerman/Sudoku.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/scheinerman/Sudoku.jl?branch=master)
+
+[![codecov.io](http://codecov.io/github/scheinerman/Sudoku.jl/coverage.svg?branch=master)](http://codecov.io/github/scheinerman/Sudoku.jl?branch=master)
+
 This module solves Sudoku puzzles using integer programming.
 
 ## Usage
