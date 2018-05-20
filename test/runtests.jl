@@ -5,8 +5,6 @@ else
     using Test
 end
 
-# write your own tests here
-
 A = sudoku(Sudoku.puzz1)
 @test sudoku_check(A)
 
@@ -15,3 +13,7 @@ A = sudoku(Sudoku.puzz2)
 
 A = sudoku(Sudoku.puzz3)
 @test sudoku_check(A)
+
+sudoku_print(A)
+x = sudoku_strings(A)
+@test length(A)==13

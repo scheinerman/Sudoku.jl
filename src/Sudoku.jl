@@ -115,7 +115,7 @@ function sudoku_check(A::Matrix{Int})::Bool
     return true
 end
 
-
+include("sudoku_print.jl")
 include("examples.jl")
 
 end # module
