@@ -16,4 +16,4 @@ A = sudoku(Sudoku.puzz3)
 
 sudoku_print(A)
 x = sudoku_strings(A)
-@test length(A)==13
+@test length(x)==13
