@@ -16,7 +16,6 @@ given values of a Sudoku puzzle and whose zero values are the blanks.
 function sudoku(A::Matrix{Int})::Matrix{Int}
     n = 9
     nn = 3
-    # MOD = Model(solver=GurobiSolver())
     MOD = Model(solver=CbcSolver())
 
     # variable X[i,j,k] = 1 means there's a k in cell (i,j)
@@ -43,7 +42,7 @@ function sudoku(A::Matrix{Int})::Matrix{Int}
         end
     end
 
-    # Each 3x3 sub square has exactly on k
+    # Each 3x3 sub square has exactly one k
 
     for a=1:nn
         for b=1:nn
@@ -62,7 +61,7 @@ function sudoku(A::Matrix{Int})::Matrix{Int}
         end
     end
 
-    # now solve
+    # now solve and extract the solution
 
     status = solve(MOD)
     XX = getvalue(X)
