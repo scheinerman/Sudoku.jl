@@ -28,7 +28,7 @@ function sudoku(A::Matrix{Int})::Matrix{Int}
         end
     end
 
-    # There is exactly on k in every row
+    # There is exactly one k in every row
     for i=1:n
         for k=1:n
             @constraint(MOD, sum(X[i,j,k] for j=1:n)==1)
