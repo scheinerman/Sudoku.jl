@@ -1,6 +1,18 @@
 export sudoku_print, sudoku_strings
 
-_form3(r::Vector) = " $(r[1]) $(r[2]) $(r[3]) |"
+_blank = "."  # this is the character used for 0s in a Sudoku puzzle
+
+_form1(a::Int) =  a > 0 ? "$a" : _blank
+
+function _form3(r::Vector)
+    result = " "
+    for k=1:3
+        a = r[k]
+        result *=  _form1(a) * " "
+    end
+    result *= "|"
+    return result
+end
 
 _format_line(r::Vector) = "|" * _form3(r[1:3]) * _form3(r[4:6]) * _form3(r[7:9])
 
