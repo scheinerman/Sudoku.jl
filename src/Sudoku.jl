@@ -63,6 +63,10 @@ function sudoku(A::Matrix{Int})::Matrix{Int}
 
     # now solve and extract the solution
     optimize!(MOD)
+    status = Int(termination_status(MOD))
+    if status != 1
+        error("No solution to this Sudoku puzzle")
+    end
 
     XX = value.(X)
     B = zeros(Int,n,n)

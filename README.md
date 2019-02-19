@@ -46,6 +46,8 @@ julia> sudoku(A)
  2  7  1  9  6  4  8  5  3
 ```
 
+If there is no solution to the puzzle, an error is thrown.
+
 ## Nice Printing
 
 The function `sudoku_print` prints a Sudoku matrix in an attractive manner.
