@@ -3,7 +3,6 @@ module Sudoku
 # package code goes here
 
 using JuMP
-# using MathProgBase
 using Cbc
 
 export sudoku, sudoku_check
@@ -16,7 +15,7 @@ given values of a Sudoku puzzle and whose zero values are the blanks.
 function sudoku(A::Matrix{Int})::Matrix{Int}
     n = 9
     nn = 3
-    MOD = Model(with_optimizer(Cbc.Optimizer, logLevel = 0))
+    MOD = Model(JuMP.optimizer_with_attributes(Cbc.Optimizer, "logLevel" => 0))
 
     # variable X[i,j,k] = 1 means there's a k in cell (i,j)
     @variable(MOD,X[1:n,1:n,1:n], Bin)
