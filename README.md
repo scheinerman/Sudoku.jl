@@ -1,7 +1,7 @@
 # Sudoku
 
 
-[![Build Status](https://travis-ci.org/scheinerman/Sudoku.jl.svg?branch=master)](https://travis-ci.org/scheinerman/Sudoku.jl)
+[![Build Status](https://travis-ci.com/scheinerman/Sudoku.jl.svg?branch=master)](https://travis-ci.com/scheinerman/Sudoku.jl)
 
 
 [![codecov.io](http://codecov.io/github/scheinerman/Sudoku.jl/coverage.svg?branch=master)](http://codecov.io/github/scheinerman/Sudoku.jl?branch=master)
