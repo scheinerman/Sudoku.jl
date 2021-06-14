@@ -51,34 +51,23 @@ puzzle. That is, we check that every row, column, and 3x3 submatrix contains
 the values 1 through 9 exactly once each.
 """
 function sudoku_check(A::Matrix{Int})::Bool
-    vals = collect(1:9)
-    n = 9
-    nn = 3
-
-    for i=1:n
-        row = sort(A[i,:])
-        if row != vals
-            return false
-        end
+    nn = size(A)[1] # number of items per row/column/block
+    n = Int(sqrt(nn)) # size of the problem: normal sudoku n = 3
+    
+    # All items in a row are 1:9
+    if !all(mapslices(aux -> sort(aux) == 1:nn, A, dims = 1))
+        return false
     end
 
-    for j=1:n
-        col = sort(A[:,j])
-        if col != vals
-            return false
-        end
+    # All items in a column are 1:9
+    if !all(mapslices(aux -> sort(aux) == 1:nn, A, dims = 2))
+        return false
     end
 
-    for a=0:nn-1
-        for b=0:nn-1
-            AA = A[nn*a+1:nn*(a+1), nn*b+1:nn*(b+1)]
-            if sort(AA[:]) != vals
-                return false
-            end
-        end
-    end
-
-    return true
+    # Finally we check each block, if we get this far, the sucoku will be correct
+    # or not decided by this condition
+    return all(aux -> sort(aux) == 1:nn, vec.([A[i:i+n-1, j:j+n-1] for 
+        i ∈ 1:n:nn, j ∈ 1:n:nn]))
 end
 
 include("sudoku_print.jl")
