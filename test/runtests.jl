@@ -22,5 +22,4 @@ A = sudoku(Sudoku.puzz3)
 @test sudoku_check(A)
 
 sudoku_print(A)
-x = sudoku_strings(A)
 @test length(x)==13
