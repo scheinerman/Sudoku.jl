@@ -102,6 +102,6 @@ Subsequent calls go faster.
 
 ## Acknowledgement
 
-Thanks to Diego Valcarce @valcarce01 for code simplifications and improvements, including the ability to handle different size Sudoku puzzles. 
+Thanks to Diego Valcarce for code simplifications and improvements, including the ability to handle different size Sudoku puzzles. 
 
 
