@@ -22,3 +22,8 @@ A = sudoku(Sudoku.puzz3)
 @test sudoku_check(A)
 
 sudoku_print(A)
+
+#### n = 4 ####
+A = sudoku(Sudoku.puzz41)
+@test sudoku_check(A)
+sudoku_print(A)

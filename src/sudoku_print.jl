@@ -8,7 +8,11 @@ function sudoku_print(A::Matrix)
     nn = size(A)[1]
     n = Int(sqrt(nn))
 
-    header = "+" * prod(["-"^(n*2 + 1) * "+" for _ ∈ 1:n])
+    digitsLength = length(string(nn))
+    A = lpad.(A, digitsLength, " ") # for working properly with n > 4
+
+
+    header = "+" * prod(["-"^(digitsLength * n + n + 1) * "+" for _ ∈ 1:n])
     println(header)
 
     # print every line 
