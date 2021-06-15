@@ -99,3 +99,9 @@ bit slow (presumably because of initialization of the integer programming code).
 Subsequent calls go faster.
 * If a puzzle is given with more than one solution, we only report one answer.
 * If a puzzle is given with no solutions, an error is thrown.
+
+## Acknowledgement
+
+Thanks to Diego Valcarce @valcarce01 for code simplifications and improvements, including the ability to handle different size Sudoku puzzles. 
+
+
