@@ -1,6 +1,6 @@
 name = "Sudoku"
 uuid = "ed8dd712-c67e-57b2-a78d-39b336ca029f"
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 Cbc = "9961bab8-2fa3-5c5a-9d89-47fab24efd76"

@@ -14,8 +14,12 @@ The main function in this module is `sudoku` which takes as input a
 9-by-9 integer matrix. The entries of this matrix give the Sudoku puzzle
 with 0s representing blanks. The output is the solved Sudoku puzzle.
 
-For testing purposes, we provide three sample puzzles named `Sudoku.puzz1`,
-`Sudoku.puzz2`, and `Sudoku.puzz3`.
+The `sudoku` function also solves puzzles of other sizes (such as 4-by-4 or 16-by-16).
+
+For testing purposes, we provide sample puzzles as follows: 
+* `Sudoku.puzz1`, `Sudoku.puzz2`, and `Sudoku.puzz3` are 9-by-9 puzzles.
+* `Sudoku.puzz21`, `Sudoku.puzz22`, and `Sudoku.puzz23` are 4-by-4 puzzles.
+* `Sudoku.puzz41` is a 16-by-16 puzzle.
 
 ```julia
 julia> using Sudoku
@@ -86,8 +90,6 @@ julia> sudoku_print(sudoku(A))
 
 ## Comments
 
-* This version only handles 9x9 Sudoku puzzles. It would probably not be
-too much work to generalize.
 * We provide the function `sudoku_check` that verifies if the output of
 `sudoku` is a valid grid.
 * We use the CBC solver because it is open source. It would be easy to change
@@ -96,5 +98,4 @@ to other solvers.
 bit slow (presumably because of initialization of the integer programming code).
 Subsequent calls go faster.
 * If a puzzle is given with more than one solution, we only report one answer.
-* If a puzzle is given with no solutions, warnings are generated and an all
-zero matrix is returned.
+* If a puzzle is given with no solutions, an error is thrown.
