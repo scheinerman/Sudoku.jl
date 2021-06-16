@@ -2,8 +2,7 @@ module Sudoku
 
 # package code goes here
 
-using JuMP
-using Cbc
+using JuMP, Cbc, ChooseOptimizer
 
 export sudoku, sudoku_check
 
@@ -15,18 +14,24 @@ given values of a Sudoku puzzle and whose zero values are the blanks.
 function sudoku(A::Matrix{Int})::Matrix{Int}
     nn = size(A)[1] # number of items per row/column/block
     n = Int(sqrt(nn)) # size of the problem: normal sudoku n = 3
-    MOD = Model(JuMP.optimizer_with_attributes(Cbc.Optimizer, "logLevel" => 0))
+    # MOD = Model(JuMP.optimizer_with_attributes(Cbc.Optimizer, "logLevel" => 0))
+    set_solver_verbose(false)
+    MOD = Model(get_solver())
 
     # variable X[i,j,k] = 1 means there's a k in cell (i,j)
-    @variable(MOD,X[1:nn,1:nn,1:nn], Bin)
+    @variable(MOD, X[1:nn, 1:nn, 1:nn], Bin)
 
     ########### model constraints ##################
-    @constraints(MOD, begin
-        oneKPerCell, sum(X[1:nn, 1:nn, k] for k ∈ 1:nn) .== 1
-        oneKPerRow, sum(X[1:nn, j, 1:nn] for j ∈ 1:nn) .== 1
-        oneKPerCol, sum(X[i, 1:nn, 1:nn] for i ∈ 1:nn) .== 1
-        oneKPerBlock, sum.(X[i:i+n-1, j:j+n-1, k] for k ∈ 1:nn, i ∈ 1:n:nn, j ∈ 1:n:nn) .== 1
-    end)
+    @constraints(
+        MOD,
+        begin
+            oneKPerCell, sum(X[1:nn, 1:nn, k] for k ∈ 1:nn) .== 1
+            oneKPerRow, sum(X[1:nn, j, 1:nn] for j ∈ 1:nn) .== 1
+            oneKPerCol, sum(X[i, 1:nn, 1:nn] for i ∈ 1:nn) .== 1
+            oneKPerBlock,
+            sum.(X[i:i+n-1, j:j+n-1, k] for k ∈ 1:nn, i ∈ 1:n:nn, j ∈ 1:n:nn) .== 1
+        end
+    )
 
     # Process values in A
     nonZeroIndices = findall(i -> i != 0, A)
@@ -41,7 +46,7 @@ function sudoku(A::Matrix{Int})::Matrix{Int}
         error("No solution to this Sudoku puzzle")
     end
 
-    return Int.(sum(value.(X[:,:,k]) * k for k in 1:nn))
+    return Int.(sum(value.(X[:, :, k]) * k for k = 1:nn))
 end
 
 
@@ -53,7 +58,7 @@ the values 1 through 9 exactly once each.
 function sudoku_check(A::Matrix{Int})::Bool
     nn = size(A)[1] # number of items per row/column/block
     n = Int(sqrt(nn)) # size of the problem: normal sudoku n = 3
-    
+
     # All items in a row are 1:9
     if !all(mapslices(aux -> sort(aux) == 1:nn, A, dims = 1))
         return false
@@ -66,8 +71,10 @@ function sudoku_check(A::Matrix{Int})::Bool
 
     # Finally we check each block, if we get this far, the sucoku will be correct
     # or not decided by this condition
-    return all(aux -> sort(aux) == 1:nn, vec.([A[i:i+n-1, j:j+n-1] for 
-        i ∈ 1:n:nn, j ∈ 1:n:nn]))
+    return all(
+        aux -> sort(aux) == 1:nn,
+        vec.([A[i:i+n-1, j:j+n-1] for i ∈ 1:n:nn, j ∈ 1:n:nn]),
+    )
 end
 
 include("sudoku_print.jl")

@@ -17,7 +17,7 @@ function sudoku_print(A::Matrix)
 
     # print every line 
     for i ∈ 1:nn
-        to_print = "" 
+        to_print = ""
         for j ∈ 1:nn
             if j == 1
                 to_print *= "| " * A[i, j] * " "

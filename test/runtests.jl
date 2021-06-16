@@ -1,4 +1,4 @@
-using Sudoku, Test 
+using Sudoku, Test
 #### n = 2 ####
 A = sudoku(Sudoku.puzz21)
 @test sudoku_check(A)
