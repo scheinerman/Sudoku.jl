@@ -1,10 +1,6 @@
 # Sudoku
 
 
-[![Build Status](https://travis-ci.com/scheinerman/Sudoku.jl.svg?branch=master)](https://travis-ci.com/scheinerman/Sudoku.jl)
-
-
-
 This module solves Sudoku puzzles using integer programming.
 
 ## Usage
