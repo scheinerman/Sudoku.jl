@@ -99,6 +99,28 @@ Subsequent calls go faster.
 * If a puzzle is given with more than one solution, we only report one answer.
 * If a puzzle is given with no solutions, an error is thrown.
 
+## Using Other Solvers
+
+This module uses the `Cbc` module to solve Sudoku puzzles. To use another solver, use the `ChooseOptimizer` module like this:
+```julia
+julia> using ChooseOptimizer, GLPK, Sudoku
+
+julia> set_solver(GLPK)
+
+julia> sudoku(Sudoku.puzz3)
+9×9 Matrix{Int64}:
+ 1  3  7  8  6  5  9  4  2
+ 8  9  6  4  2  7  5  1  3
+ 4  2  5  9  3  1  7  8  6
+ 6  8  1  2  9  3  4  7  5
+ 9  5  3  7  4  8  6  2  1
+ 2  7  4  1  5  6  3  9  8
+ 5  4  8  6  7  2  1  3  9
+ 7  6  2  3  1  9  8  5  4
+ 3  1  9  5  8  4  2  6  7
+```
+
+
 ## Acknowledgement
 
 Thanks to Diego Valcarce for code simplifications and improvements, including the ability to handle different size Sudoku puzzles. 
