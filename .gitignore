@@ -1,4 +1,1 @@
-*.jl.cov
-*.jl.*.cov
-*.jl.mem
 .vscode/*
