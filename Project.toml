@@ -1,6 +1,6 @@
 name = "Sudoku"
 uuid = "ed8dd712-c67e-57b2-a78d-39b336ca029f"
-version = "0.1.4"
+version = "0.1.5"
 
 [deps]
 ChooseOptimizer = "858a232f-1959-5553-8cfc-91e1fd5304e2"
@@ -8,7 +8,7 @@ GLPK = "60bf3e95-4087-53dc-ae20-288a0d20c6a6"
 JuMP = "4076af6c-e467-56ae-b986-b466b2749572"
 
 [compat]
-ChooseOptimizer = "0.1, 0.2"
+ChooseOptimizer = "0.2, 0.3"
 JuMP = "0.21, 0.22, 0.23, 1"
 julia = "1"
 GLPK = "1"
