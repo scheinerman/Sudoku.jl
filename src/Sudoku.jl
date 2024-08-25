@@ -2,7 +2,7 @@ module Sudoku
 
 # package code goes here
 
-using JuMP, GLPK, ChooseOptimizer
+using JuMP, ChooseOptimizer
 
 export sudoku, sudoku_check
 

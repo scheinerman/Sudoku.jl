@@ -87,8 +87,8 @@ julia> sudoku_print(sudoku(A))
 
 * We provide the function `sudoku_check` that verifies if the output of
 `sudoku` is a valid grid.
-* We use the GLPK solver because it is open source. It would be easy to change
-to other solvers.
+* We use the `HiGHS` solver because it is open source. It would be easy to change
+to other solvers using `ChooseOptimizer`.
 * Note that the first time `sudoku` is invoked it can be a
 bit slow (presumably because of initialization of the integer programming code).
 Subsequent calls go faster.
