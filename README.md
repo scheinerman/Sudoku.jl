@@ -13,6 +13,7 @@ The `sudoku` function also solves puzzles of other sizes (such as 4-by-4 or 16-b
 
 For testing purposes, we provide sample puzzles as follows: 
 * `Sudoku.puzz1`, `Sudoku.puzz2`, and `Sudoku.puzz3` are 9-by-9 puzzles.
+* `Sudoku.minimum_puzzle` is another 9-by-9 puzzle with just 17 seed entries.
 * `Sudoku.puzz21`, `Sudoku.puzz22`, and `Sudoku.puzz23` are 4-by-4 puzzles.
 * `Sudoku.puzz41` is a 16-by-16 puzzle.
 
